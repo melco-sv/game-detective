@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Detektif SQL - Kota Wiralaga</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#ffd4d2","on-error":"#690005","secondary-container":"#bb881c","error":"#ffb4ab","on-amber":"#1A1407","on-paper":"#2A2112","danger":"#FF5A5F","bg-editor":"#0A0F1B","tertiary-fixed-dim":"#ffb3b0","on-tertiary-fixed":"#410007","inverse-surface":"#dee2f6","accent-amber":"#F2B84B","surface-dim":"#0e1321","stamp-red":"#B3261E","primary-container":"#ebddbf","error-container":"#93000a","paper-tab":"#E0CFA8","on-tertiary":"#680010","primary-fixed-dim":"#d3c5a8","tertiary-fixed":"#ffdad8","outline":"#969085","background":"#0e1321","text-primary":"#E9EDF5","paper-muted":"#6B5A3A","on-primary":"#37301b","outline-variant":"#4b463d","surface-container-lowest":"#090e1c","on-surface-variant":"#cdc6b9","surface-container-low":"#161b2a","surface":"#0e1321","on-error-container":"#ffdad6","success":"#34D39E","on-secondary-fixed":"#271900","surface-container":"#1a1f2e","surface-3":"#232D45","text-secondary":"#A9B2C6","on-secondary":"#422c00","on-tertiary-fixed-variant":"#92001b","tertiary":"#fff9f8","primary-fixed":"#efe1c3","surface-container-high":"#252a39","border-subtle":"#2E3A56","paper":"#EBDDBF","info":"#6AA5FF","on-primary-fixed-variant":"#4f4630","surface-2":"#1B2336","paper-line":"#CDB98F","surface-tint":"#d3c5a8","stamp-green":"#1E6B4F","border-strong":"#5A6890","surface-bright":"#343948","on-background":"#dee2f6","inverse-primary":"#675d46","secondary-fixed-dim":"#f7bd4f","surface-container-highest":"#303444","bg-base":"#0D1220","text-muted":"#909BB2","primary":"#fffaf7","on-primary-container":"#6b6149","secondary-fixed":"#ffdeaa","on-tertiary-container":"#ba2733","secondary":"#f7bd4f","surface-1":"#141A2A","on-primary-fixed":"#211b08","hint":"#B99AFF","on-secondary-fixed-variant":"#5f4100","inverse-on-surface":"#2b303f","danger-container":"#C8323A","surface-variant":"#303444","on-secondary-container":"#392600","on-surface":"#dee2f6"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"2rem","space-md":"1rem","margin":"2rem","gutter-dense":"0.75rem","gutter":"1.5rem","space-lg":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","margin-mobile":"1rem"},"fontFamily":{"code-md":["JetBrains Mono"],"body-lg":["Manrope"],"label-sm":["Manrope"],"display-lg-mobile":["Domine"],"display-xl-mobile":["Domine"],"body-md":["Manrope"],"body-sm":["Manrope"],"label-md":["Manrope"],"code-sm":["JetBrains Mono"],"headline-lg":["Domine"],"display-md":["Domine"],"display-xl":["Domine"],"headline-sm":["Manrope"],"display-lg":["Domine"]},"fontSize":{"code-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"display-lg-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"18px","fontWeight":"500"}],"headline-lg":["22px",{"lineHeight":"30px","fontWeight":"600"}],"display-md":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"700"}],"display-lg":["40px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"700"}]}}}}</script></head><body class="bg-bg-base font-body-md text-text-primary antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 z-50 h-14 bg-bg-base border-b border-border-subtle"><div class="h-14 w-full px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Emblem DID Wiralaga" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WI9Hvn5PgFX9NxgHJsuJVYxNtsZrZrk8JdgK7irfSUXOMuvIYXn0LtzYtvmTuRmTps-DB9AK1mYzBVkTDGSqe1wsF3CgrCHwqNI4T8UDr156HMizPPrvRBm9XgxbypQeNxGbzV3orhgrFugElMYVvaaUD7B4Ql52xZK5drVNhJD_UVWuSlUe8muNwky6jVEka-rua9-HqjIlQmePd4cbkPavGmd5VFi29sOZvAANhoSVrWpo4fKK8BRNCQ"/><div class="flex flex-col justify-center"><span class="font-label-sm text-label-sm uppercase tracking-wider text-accent-amber leading-none">KOTA WIRALAGA</span><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-text-primary leading-tight">Detektif SQL</span></div></div><nav class="hidden md:flex items-center gap-space-xs h-full" data-active-classes="bg-surface-2 text-accent-amber border-b-2 border-accent-amber font-semibold"><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="papan-kasus" href="#">Papan Kasus</a><a aria-current="page" class="px-space-md h-full flex items-center transition-colors bg-surface-2 text-accent-amber border-b-2 border-accent-amber font-semibold" data-path="ruang-investigasi" href="#">Ruang Investigasi</a><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="buku-catatan" href="#">Buku Catatan</a><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="pengaturan" href="#">Pengaturan</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-1 border border-border-subtle"><span class="w-2 h-2 rounded-full bg-success animate-pulse"></span><span class="font-code-sm text-code-sm text-text-muted">Lokal / Aman</span></div><div class="flex items-center gap-space-sm px-space-sm py-space-xs rounded bg-surface-2 border border-border-subtle"><span class="material-symbols-outlined text-accent-amber text-[18px]">verified</span><div class="hidden sm:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary leading-tight">Raka Pratama</span><span class="font-body-sm text-body-sm text-text-muted leading-tight">Detektif Muda</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-14 bg-bg-base min-h-[calc(100vh-56px)] flex flex-col"><div class="flex flex-col w-full">
+<!-- Sub-Header Workspace Context Bar -->
+<div class="w-full bg-surface-1 shadow-md px-gutter py-space-sm flex items-center justify-between z-20">
+<div class="flex items-center gap-space-md">
+<button class="flex items-center gap-space-xs text-text-secondary hover:text-text-primary px-space-sm py-space-xs rounded bg-surface-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Papan Kasus</span>
+</button>
+<div class="h-4 w-px bg-surface-3"></div>
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-text-primary">BAB 3 · Sambal Juara yang Dicuri</span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-3 text-accent-amber font-label-sm text-label-sm tracking-wide">Step 4/8</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-0.5 rounded bg-surface-container-lowest text-text-muted font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-accent-amber text-[16px]">timer</span>
+<span class="tracking-widest">21:37</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="relative flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-2 text-text-primary hover:bg-surface-3 transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-accent-amber">menu_book</span>
+<span>Buku Catatan</span>
+<span class="ml-1 px-1.5 py-0.2 bg-surface-container-highest text-accent-amber rounded font-code-sm text-[11px] font-bold">4</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded bg-accent-amber hover:bg-secondary text-on-amber font-label-md text-label-md transition-colors shadow-md shadow-accent-amber/10">
+<span class="material-symbols-outlined text-[18px]">approval</span>
+<span class="tracking-wide">Ajukan Laporan</span>
+</button>
+</div>
+</div>
+<!-- 3-Column IDE Layout -->
+<div class="w-full grid grid-cols-12 gap-space-xs p-space-xs bg-bg-base min-h-[calc(100vh-106px)]">
+<!-- LEFT PANEL: MISI INVESTIGASI (Width ~ 320px -> col-span-3) -->
+<section class="col-span-12 xl:col-span-3 flex flex-col gap-space-xs bg-surface-1 rounded-lg p-space-sm overflow-hidden">
+<!-- NPC Dialogue Callout (Dossier Note Style) -->
+<div class="p-space-sm rounded bg-surface-2 relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover shadow" data-alt="Portrait of Bu Laras, an authoritative female police chief investigator in her late 40s wearing an Indonesian CID uniform, atmospheric dramatic hard cinematic lighting, midnight blue and muted parchment tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMrO6jwENPE1wb8JSREUov7KgNOfHekolCvqAhfKMMZ_UJdRWxRMB19e6xbTG9vp8cmlhAbACwy79aJeocJQ8yB56JM6JYyKPIY7Srhb90j6SdnNTa1qAuqdACcjGEX5zo1D5BK0sJ4mk9lyO89DfxDi3Qs0rGGSmgCRoAMM1XqSDRXby9tHwoUS1q9BCSfY8Kes5mV6kCdAAMXVca7G0cYWyqY7peAYhS_IXUN3LdRsR434cfNbSIgQ"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-accent-amber flex items-center justify-center">
+<span class="material-symbols-outlined text-on-amber text-[11px] font-bold">shield</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-accent-amber">Bu Laras · Kepala Unit</span>
+<span class="font-code-sm text-[10px] text-text-muted">INSTRUKSI</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-primary mt-1 italic leading-relaxed">
+              “Log akses cuma tahu kartu, bukan orang. Cari tahu kartu itu milik siapa.”
+            </p>
+</div>
+</div>
+</div>
+<!-- Step Timeline Container -->
+<div class="flex items-center justify-between px-space-xs pt-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-secondary">Daftar Langkah Analisis</span>
+<span class="font-code-sm text-code-sm text-success">3 dari 8 step selesai</span>
+</div>
+<!-- Progress Meter -->
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-success h-full rounded-full transition-all duration-500" style="width: 37.5%;"></div>
+</div>
+<!-- Steps Scroll List -->
+<div class="flex flex-col gap-space-xs overflow-y-auto pr-0.5 mt-space-xs max-h-[calc(100vh-270px)]">
+<!-- Step 1: Cleared -->
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-2 text-text-secondary opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-success text-[18px]">check_circle</span>
+<span class="font-body-md text-body-md line-through">1 · Kenali Para Finalis</span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted">SELESAI</span>
+</div>
+<!-- Step 2: Cleared -->
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-2 text-text-secondary opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-success text-[18px]">check_circle</span>
+<span class="font-body-md text-body-md line-through">2 · Siapa Masuk Dapur Malam Itu?</span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted">SELESAI</span>
+</div>
+<!-- Step 3: Cleared -->
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-2 text-text-secondary opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-success text-[18px]">check_circle</span>
+<span class="font-body-md text-body-md line-through">3 · Kartu Milik Siapa?</span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted">SELESAI</span>
+</div>
+<!-- Step 4: ACTIVE CARD -->
+<div class="p-space-md rounded bg-surface-2 relative shadow-lg overflow-hidden group">
+<!-- Active amber accent line on the left -->
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-accent-amber"></div>
+<div class="pl-2 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-accent-amber flex items-center gap-1.5">
+                4 · Nama di Balik Kartu
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-3 text-accent-amber font-code-sm text-[11px] uppercase tracking-wide">
+                JOIN 3 tabel
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-primary leading-normal mt-1">
+              Log akses hanya mencatat <code class="text-accent-amber font-code-sm bg-surface-container-lowest px-1 rounded">id_kartu</code>. Gabungkan <code class="text-accent-amber font-code-sm bg-surface-container-lowest px-1 rounded">log_akses_dapur</code>, <code class="text-accent-amber font-code-sm bg-surface-container-lowest px-1 rounded">kartu_akses</code>, dan <code class="text-accent-amber font-code-sm bg-surface-container-lowest px-1 rounded">penduduk</code> untuk melihat nama pemilik kartu yang masuk dapur antara pukul 22.00 dan 02.00.
+            </p>
+<!-- Target Objective Specs -->
+<div class="mt-space-xs p-space-xs rounded bg-surface-container-lowest flex flex-col gap-1">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-text-muted">
+<span class="material-symbols-outlined text-[14px] text-accent-amber">table_rows</span>
+<span>Kolom: <strong class="text-text-primary font-medium">nama, peran, waktu, pintu</strong></span>
+</div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-text-muted">
+<span class="material-symbols-outlined text-[14px] text-accent-amber">sort</span>
+<span>Urut: <strong class="text-text-primary font-medium">waktu terawal</strong></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Locked Steps 5-8 -->
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-1 text-text-muted opacity-50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-body-md text-body-md">5 · Kamera Tidak Berbohong</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-1 text-text-muted opacity-50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-body-md text-body-md">6 · Kartu Pinjaman</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-1 text-text-muted opacity-50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-body-md text-body-md">7 · Telepon Lewat Tengah Malam</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-1 text-text-muted opacity-50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-body-md text-body-md">8 · Satu Nama Tersisa</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CENTER PANEL: EDITOR & HASIL (Fluid flex, min 560px -> col-span-6) -->
+<main class="col-span-12 xl:col-span-6 flex flex-col gap-space-xs">
+<!-- SQL Editor Upper Box -->
+<div class="flex flex-col bg-surface-1 rounded-lg overflow-hidden shadow">
+<!-- Editor Header Bar -->
+<div class="flex items-center justify-between px-space-sm py-1.5 bg-surface-2">
+<!-- Editor Tabs -->
+<div class="flex items-center gap-1">
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-t bg-bg-editor text-accent-amber font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[16px]">code</span>
+<span>query_1.sql</span>
+<button class="hover:text-text-primary ml-1"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<button class="p-1 text-text-muted hover:text-text-primary rounded hover:bg-surface-3 transition-colors" title="Tab Baru">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Editor Actions -->
+<div class="flex items-center gap-1.5">
+<button class="flex items-center gap-1 px-space-sm py-1 rounded hover:bg-surface-3 text-text-muted hover:text-text-primary font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">magic_button</span>
+<span class="hidden sm:inline">Format</span>
+</button>
+<button class="flex items-center gap-1 px-space-sm py-1 rounded hover:bg-surface-3 text-text-muted hover:text-text-primary font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">clear_all</span>
+<span class="hidden sm:inline">Bersihkan</span>
+</button>
+<button class="flex items-center gap-1 px-space-sm py-1 rounded hover:bg-surface-3 text-text-muted hover:text-text-primary font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span class="hidden sm:inline">Riwayat</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-1 rounded bg-accent-amber hover:bg-secondary text-on-amber font-label-md text-label-md transition-colors shadow">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span>Jalankan Query</span>
+<span class="font-code-sm text-[11px] opacity-75 font-normal ml-0.5 hidden md:inline">[Ctrl ↵]</span>
+</button>
+</div>
+</div>
+<!-- Code Mirror / Monospace Canvas -->
+<div class="bg-bg-editor p-space-sm font-code-md text-code-md overflow-x-auto min-h-[190px] flex selection:bg-surface-3">
+<!-- Line Numbers -->
+<div class="flex flex-col text-right text-text-muted select-none pr-space-md opacity-40 font-code-md">
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+</div>
+<!-- Code Tokens -->
+<pre class="font-code-md leading-[22px] flex-1"><span class="text-accent-amber font-semibold">SELECT</span> p.nama, k.peran, l.waktu, l.pintu
+<span class="text-accent-amber font-semibold">FROM</span> log_akses_dapur <span class="text-accent-amber font-semibold">AS</span> l
+<span class="text-accent-amber font-semibold">JOIN</span> kartu_akses <span class="text-accent-amber font-semibold">AS</span> k <span class="text-accent-amber font-semibold">ON</span> k.id_kartu = l.id_kartu
+<span class="text-accent-amber font-semibold">JOIN</span> penduduk <span class="text-accent-amber font-semibold">AS</span> p <span class="text-accent-amber font-semibold">ON</span> p.nik = k.nik_pemilik
+<span class="text-accent-amber font-semibold">WHERE</span> l.arah = <span class="text-success">'masuk'</span>
+  <span class="text-accent-amber font-semibold">AND</span> l.waktu <span class="text-accent-amber font-semibold">BETWEEN</span> <span class="text-success">'2026-08-14 22:00'</span> <span class="text-accent-amber font-semibold">AND</span> <span class="text-success">'2026-08-15 02:00'</span>
+<span class="text-accent-amber font-semibold">ORDER BY</span> l.waktu;</pre>
+</div>
+<!-- Status Line -->
+<div class="flex items-center justify-between px-space-md py-1 bg-surface-2 font-code-sm text-[11px] text-text-muted">
+<span>Baris 7, Kolom 18</span>
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+              SQLite v3.41
+            </span>
+<span>Mode baca saja</span>
+</div>
+</div>
+</div>
+<!-- Result Window Lower Box -->
+<div class="flex flex-col bg-surface-1 rounded-lg overflow-hidden flex-1 shadow">
+<!-- Results Sub-nav & Tab Switcher -->
+<div class="flex items-center justify-between px-space-sm py-1 bg-surface-2">
+<div class="flex items-center gap-1">
+<button class="px-space-md py-1.5 rounded-t bg-surface-1 text-accent-amber font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">dataset</span>
+<span>Hasil Query</span>
+</button>
+<button class="px-space-md py-1.5 rounded-t text-text-muted hover:text-text-primary font-label-md text-label-md flex items-center gap-1.5">
+<span>kartu_akses</span>
+<span class="font-code-sm text-[10px] text-text-secondary">(preview)</span>
+</button>
+</div>
+<!-- Result Table Toolbar Action buttons -->
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<button class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-3 hover:bg-surface-bright text-text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px] text-accent-amber">bookmark_add</span>
+<span>Simpan ke Catatan</span>
+</button>
+<button class="flex items-center gap-1 px-space-sm py-1 rounded hover:bg-surface-3 text-text-muted hover:text-text-primary transition-colors" title="Salin CSV">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span class="hidden sm:inline">Salin CSV</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-3 text-text-muted hover:text-text-primary transition-colors" title="Perbesar">
+<span class="material-symbols-outlined text-[18px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Result Status Sub-bar -->
+<div class="flex items-center justify-between px-space-md py-1.5 bg-surface-1 text-text-secondary font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span>Hasil · <strong>3 baris</strong> diperoleh</span>
+<span class="text-text-muted">(eksekusi: 0,02 dtk)</span>
+</div>
+<span class="text-text-muted">Semua kendala terpenuhi</span>
+</div>
+<!-- Result Data Table (High-Legibility Monospace Grid) -->
+<div class="overflow-x-auto flex-1 bg-surface-container-lowest">
+<table class="w-full text-left font-code-md text-code-md border-collapse">
+<thead>
+<tr class="bg-surface-2 text-text-secondary sticky top-0 font-semibold uppercase text-[12px] tracking-wider">
+<th class="py-2.5 px-space-md w-12 text-center text-text-muted">#</th>
+<th class="py-2.5 px-space-md">nama</th>
+<th class="py-2.5 px-space-md">peran</th>
+<th class="py-2.5 px-space-md">waktu</th>
+<th class="py-2.5 px-space-md">pintu</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-2">
+<tr class="hover:bg-surface-2/60 transition-colors">
+<td class="py-2.5 px-space-md text-center text-text-muted font-code-sm">1</td>
+<td class="py-2.5 px-space-md text-text-primary font-medium">Wulan Pratiwi</td>
+<td class="py-2.5 px-space-md text-text-secondary">
+<span class="px-2 py-0.5 rounded-full bg-surface-3 text-text-primary text-[12px]">Panitia</span>
+</td>
+<td class="py-2.5 px-space-md text-accent-amber tabular-nums">2026-08-14 22:15</td>
+<td class="py-2.5 px-space-md text-text-primary">Utama</td>
+</tr>
+<tr class="hover:bg-surface-2/60 transition-colors">
+<td class="py-2.5 px-space-md text-center text-text-muted font-code-sm">2</td>
+<td class="py-2.5 px-space-md text-text-primary font-medium">Ratna Sari</td>
+<td class="py-2.5 px-space-md text-text-secondary">
+<span class="px-2 py-0.5 rounded-full bg-surface-3 text-text-primary text-[12px]">Juri</span>
+</td>
+<td class="py-2.5 px-space-md text-accent-amber tabular-nums">2026-08-14 23:05</td>
+<td class="py-2.5 px-space-md text-text-primary">Utama</td>
+</tr>
+<!-- Highlighted Suspect Row -->
+<tr class="bg-surface-2/90 hover:bg-surface-3 transition-colors relative">
+<td class="py-2.5 px-space-md text-center text-danger font-code-sm font-bold">3</td>
+<td class="py-2.5 px-space-md text-text-primary font-semibold flex items-center gap-1.5">
+<span>Bambang Hartadi</span>
+<span class="material-symbols-outlined text-danger text-[16px]" title="Pintu belakang di luar jam resmi">priority_high</span>
+</td>
+<td class="py-2.5 px-space-md text-text-secondary">
+<span class="px-2 py-0.5 rounded-full bg-surface-3 text-text-primary text-[12px]">Juri</span>
+</td>
+<td class="py-2.5 px-space-md text-danger font-medium tabular-nums">2026-08-15 00:42</td>
+<td class="py-2.5 px-space-md text-danger font-semibold flex items-center gap-1">
+<span>Belakang</span>
+<span class="w-1.5 h-1.5 rounded-full bg-danger animate-ping"></span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Assistant Intelligence Drawer / Micro Bar -->
+<div class="px-space-md py-space-sm bg-surface-2 flex items-center gap-space-sm text-text-primary">
+<div class="w-6 h-6 rounded bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">troubleshoot</span>
+</div>
+<p class="font-body-sm text-body-sm leading-snug">
+<strong class="text-accent-amber font-semibold">Asisten:</strong> 3 baris cocok dengan filter target. <strong>Bambang Hartadi</strong> masuk lewat pintu belakang saat tengah malam.
+          </p>
+</div>
+</div>
+</main>
+<!-- RIGHT PANEL: SKEMA & INTELLIGENCE INSPECTOR (Width ~ 320px -> col-span-3) -->
+<aside class="col-span-12 xl:col-span-3 flex flex-col gap-space-xs bg-surface-1 rounded-lg p-space-sm overflow-hidden">
+<!-- Inspector Tabs -->
+<div class="flex items-center gap-1 bg-surface-2 p-1 rounded">
+<button class="flex-1 py-1 text-center font-label-md text-label-md rounded bg-surface-1 text-accent-amber font-semibold">Skema</button>
+<button class="flex-1 py-1 text-center font-label-md text-label-md rounded text-text-muted hover:text-text-primary transition-colors">Bantuan</button>
+<button class="flex-1 py-1 text-center font-label-md text-label-md rounded text-text-muted hover:text-text-primary transition-colors">Buku Saku</button>
+</div>
+<!-- Schema Metadata & Search -->
+<div class="flex flex-col gap-space-xs pt-1">
+<div class="flex items-center justify-between text-text-muted font-body-sm text-body-sm px-1">
+<span>Database Wiralaga</span>
+<span class="font-code-sm text-[11px] text-text-secondary">6 sheet tersedia</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[18px] text-text-muted">search</span>
+<input class="w-full bg-surface-container-lowest text-text-primary font-code-sm text-code-sm pl-9 pr-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-accent-amber placeholder:text-text-muted/60" placeholder="Cari tabel atau kolom..." type="text"/>
+</div>
+</div>
+<!-- Accordion Tables List -->
+<div class="flex flex-col gap-1.5 overflow-y-auto flex-1 mt-1 pr-0.5 max-h-[calc(100vh-275px)]">
+<!-- Table 1: penduduk -->
+<div class="rounded bg-surface-2 overflow-hidden">
+<div class="flex items-center justify-between p-space-sm cursor-pointer hover:bg-surface-3 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">chevron_right</span>
+<span class="font-code-sm text-code-sm text-text-primary font-semibold">penduduk</span>
+</div>
+<span class="font-code-sm text-[11px] text-text-muted">4.000 baris</span>
+</div>
+</div>
+<!-- Table 2: peserta_lomba -->
+<div class="rounded bg-surface-2 overflow-hidden">
+<div class="flex items-center justify-between p-space-sm cursor-pointer hover:bg-surface-3 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">chevron_right</span>
+<span class="font-code-sm text-code-sm text-text-primary font-semibold">peserta_lomba</span>
+</div>
+<span class="font-code-sm text-[11px] text-text-muted">64 baris</span>
+</div>
+</div>
+<!-- Table 3: kartu_akses -->
+<div class="rounded bg-surface-2 overflow-hidden">
+<div class="flex items-center justify-between p-space-sm cursor-pointer hover:bg-surface-3 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">chevron_right</span>
+<span class="font-code-sm text-code-sm text-text-primary font-semibold">kartu_akses</span>
+</div>
+<span class="font-code-sm text-[11px] text-text-muted">180 baris</span>
+</div>
+</div>
+<!-- Table 4: log_akses_dapur (EXPANDED ACTIVE ACCORDION) -->
+<div class="rounded bg-surface-2 overflow-hidden">
+<div class="flex items-center justify-between p-space-sm cursor-pointer bg-surface-3 text-accent-amber">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-amber text-[18px]">expand_more</span>
+<span class="font-code-sm text-code-sm font-semibold">log_akses_dapur</span>
+</div>
+<span class="font-code-sm text-[11px] opacity-80">5.000 baris</span>
+</div>
+<!-- Column Attributes Detail Drawer -->
+<div class="p-space-sm bg-surface-container-lowest flex flex-col gap-1 font-code-sm text-[12px]">
+<div class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-2/40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-accent-amber">key</span>
+<span class="text-text-primary font-medium">id</span>
+</div>
+<span class="text-text-muted uppercase text-[10px]">INT <span class="text-accent-amber">PK</span></span>
+</div>
+<div class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-2/40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-info">link</span>
+<span class="text-text-primary">id_kartu</span>
+</div>
+<span class="text-text-muted uppercase text-[10px]">TEXT <span class="text-info">FK</span></span>
+</div>
+<div class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-2/40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-muted">schedule</span>
+<span class="text-text-primary">waktu</span>
+</div>
+<span class="text-text-muted uppercase text-[10px]">DATETIME</span>
+</div>
+<div class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-2/40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-muted">door_sliding</span>
+<span class="text-text-primary">pintu</span>
+</div>
+<span class="text-text-muted uppercase text-[10px]">TEXT</span>
+</div>
+<div class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-2/40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-muted">directions_walk</span>
+<span class="text-text-primary">arah</span>
+</div>
+<span class="text-text-muted uppercase text-[10px]">TEXT</span>
+</div>
+</div>
+</div>
+<!-- Table 5: cctv_dapur -->
+<div class="rounded bg-surface-2 overflow-hidden">
+<div class="flex items-center justify-between p-space-sm cursor-pointer hover:bg-surface-3 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">chevron_right</span>
+<span class="font-code-sm text-code-sm text-text-primary font-semibold">cctv_dapur</span>
+</div>
+<span class="font-code-sm text-[11px] text-text-muted">3.000 baris</span>
+</div>
+</div>
+<!-- Table 6: log_telepon -->
+<div class="rounded bg-surface-2 overflow-hidden">
+<div class="flex items-center justify-between p-space-sm cursor-pointer hover:bg-surface-3 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">chevron_right</span>
+<span class="font-code-sm text-code-sm text-text-primary font-semibold">log_telepon</span>
+</div>
+<span class="font-code-sm text-[11px] text-text-muted">15.000 baris</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions / ERD Mini Toggle -->
+<div class="pt-space-xs mt-auto">
+<button class="w-full flex items-center justify-center gap-2 py-2 rounded bg-surface-2 hover:bg-surface-3 text-text-secondary hover:text-text-primary transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-accent-amber">schema</span>
+<span>Lihat Diagram Relasi (ERD)</span>
+</button>
+</div>
+</aside>
+</div>
+<!-- Toast / Ambient Physical Stamp Micro-Alert -->
+<div class="fixed bottom-4 right-6 z-40 bg-surface-3/95 backdrop-blur px-space-md py-space-sm rounded-lg shadow-xl flex items-center gap-space-sm pointer-events-none transform translate-y-0 transition-transform">
+<div class="w-8 h-8 rounded bg-stamp-green/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-success text-[20px]">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary uppercase tracking-wider">Temuan Tersinkron</span>
+<span class="font-body-sm text-body-sm text-text-muted">Kartu milik Bambang Hartadi tercatat di berkas.</span>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-1 border-t border-border-subtle py-space-md"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-sm text-text-muted font-body-sm text-body-sm"><div><span>© 2024 Divisi Investigasi Data (DID) Kota Wiralaga. Berkas Kasus Rahasia.</span></div><div class="flex items-center gap-space-md font-code-sm text-code-sm"><span>TERMINAL SECURE V2.4</span><span class="text-border-strong">|</span><span>KLASIFIKASI: A-1</span></div></div></footer></body></html>

@@ -1,0 +1,10 @@
+# Kebijakan konten global (docs/02-arsitektur.md §4.2, P2).
+# Dibaca oleh scripts/build-content.ts — jangan hardcode nilai ini di kode.
+
+# B6: kekerasan (violence: 'offscreen') hanya boleh dipakai mulai bab ini.
+# Bab 1-3 (MVP) non-kekerasan; Bab 4 lebih gelap tapi tetap tanpa kekerasan.
+violenceFromOrder: 5
+
+# Batas ukuran DB mentah per chapter (§2.2, §4.6 aturan 11).
+maxRawDbBytesSmall: 2000000 # Bab 1-3
+maxRawDbBytesLarge: 15000000 # Bab besar (7-8)

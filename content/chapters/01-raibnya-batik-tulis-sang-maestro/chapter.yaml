@@ -1,0 +1,312 @@
+formatVersion: 1
+id: ch01-raibnya-batik-tulis-sang-maestro
+slug: raibnya-batik-tulis-sang-maestro
+order: 1
+version: 1.0.0
+locale: id-ID
+title: "Raibnya Batik Tulis Sang Maestro"
+tagline: "CCTV mati 40 menit. Buku tamu mencatat segalanya."
+synopsis: >
+  Sehari sebelum pameran, kain batik tulis "Sekar Jagad Wiralaga" karya maestro Eyang Wirasmi
+  hilang dari Galeri Sekar Arum, Distrik Kota Lama, Wiralaga. CCTV sempat mati 40 menit.
+  Buku tamu digital mencatat semua yang masuk dan keluar.
+difficulty: pemula
+estimatedMinutes: 15
+concepts: [select, where, between, order-by, limit, in]
+engine: sqlite
+violence: none
+setting: { city: Wiralaga, district: "Kota Lama", date: "2026-06-13", timezone: WIB }
+characters:
+  - { id: laras, name: "Bu Laras Wibisono", role: "Kepala Unit, Divisi Investigasi Data" }
+  - { id: gilang, name: "Gilang", role: "Analis Data; menulis petunjuk di panel Bantuan" }
+
+database:
+  schema: schema.sql
+  seed:
+    - seed/01_laporan_kejadian.sql
+    - seed/02_penduduk.sql
+    - seed/03_buku_tamu.sql
+    - seed/04_pegawai_galeri.sql
+  tables:
+    - name: laporan_kejadian
+      label: "Laporan Kejadian"
+      icon: dokumen
+      description: "Semua laporan yang masuk ke DID."
+      columns:
+        - { name: id, type: INTEGER, key: PK, description: "Nomor laporan" }
+        - { name: tanggal, type: TEXT, description: "Tanggal kejadian (YYYY-MM-DD)", example: "2026-06-13" }
+        - { name: distrik, type: TEXT, description: "Distrik di Wiralaga", example: "Kota Lama" }
+        - { name: lokasi, type: TEXT, description: "Lokasi kejadian", example: "Galeri Sekar Arum" }
+        - { name: jenis, type: TEXT, description: "Jenis kejadian", example: "Pencurian" }
+        - { name: keterangan, type: TEXT, description: "Uraian singkat kejadian" }
+    - name: buku_tamu
+      label: "Buku Tamu Digital"
+      icon: buku
+      description: "Catatan setiap orang yang masuk dan keluar Galeri Sekar Arum."
+      columns:
+        - { name: id, type: INTEGER, key: PK, description: "Nomor catatan" }
+        - { name: tanggal, type: TEXT, description: "YYYY-MM-DD" }
+        - { name: nama, type: TEXT, description: "Nama sesuai KTP" }
+        - { name: nik, type: TEXT, key: FK, references: penduduk.nik, description: "NIK (unik per orang)" }
+        - { name: keperluan, type: TEXT, description: "Keperluan kunjungan" }
+        - { name: jam_masuk, type: TEXT, description: "Jam masuk (HH:MM, WIB)", example: "20:48" }
+        - { name: jam_keluar, type: TEXT, description: "Jam keluar (HH:MM, WIB)", example: "21:38" }
+        - { name: pintu, type: TEXT, description: "Pintu keluar: 'depan' atau 'samping'" }
+    - name: pegawai_galeri
+      label: "Pegawai Galeri"
+      icon: orang
+      description: "Daftar pegawai Galeri Sekar Arum beserta hari liburnya."
+      columns:
+        - { name: nik, type: TEXT, key: PK, references: penduduk.nik, description: "NIK pegawai" }
+        - { name: nama, type: TEXT, description: "Nama pegawai" }
+        - { name: jabatan, type: TEXT, description: "Jabatan" }
+        - { name: hari_libur, type: TEXT, description: "Hari libur mingguan", example: "Sabtu" }
+    - name: penduduk
+      label: "Data Penduduk"
+      icon: orang
+      description: "Data kependudukan Kota Wiralaga (fiktif)."
+      columns:
+        - { name: nik, type: TEXT, key: PK, description: "Nomor Induk Kependudukan (fiktif)" }
+        - { name: nama, type: TEXT, description: "Nama lengkap" }
+        - { name: jenis_kelamin, type: TEXT, description: "'L' atau 'P'" }
+        - { name: tanggal_lahir, type: TEXT, description: "YYYY-MM-DD" }
+        - { name: pekerjaan, type: TEXT, description: "Pekerjaan" }
+        - { name: alamat, type: TEXT, description: "Alamat" }
+        - { name: kelurahan, type: TEXT, description: "Kelurahan di Wiralaga" }
+
+briefing: { file: story/briefing.md }
+
+steps:
+  - id: laporan-galeri
+    title: "Buka arsip laporan"
+    story: { file: story/langkah-1.md }
+    objective: >
+      Tampilkan SEMUA kolom laporan kejadian di lokasi 'Galeri Sekar Arum'
+      pada tanggal 13 Juni 2026.
+    concepts: [select, where]
+    relatedTables: [laporan_kejadian]
+    starterSql: "SELECT * FROM laporan_kejadian LIMIT 10;"
+    validator:
+      type: resultEquals
+      solution: |
+        SELECT * FROM laporan_kejadian
+        WHERE lokasi = 'Galeri Sekar Arum' AND tanggal = '2026-06-13';
+      options: { rowOrder: any, columnOrder: any, columnNames: ignore }
+    feedback:
+      rowCount: relative
+      columnCount: true
+      mistakes:
+        - sql: "SELECT * FROM laporan_kejadian WHERE tanggal = '2026-06-13'"
+          message: "Ada laporan dari lokasi lain yang ikut tampil. Tambahkan syarat lokasi dengan AND."
+    hints:
+      - level: 1
+        kind: direction
+        body: "Cukup satu sheet. Saring barisnya dengan dua syarat sekaligus: tempat dan hari kejadian."
+      - level: 2
+        kind: tables
+        body: "Sheet `laporan_kejadian`, kolom `lokasi` dan `tanggal`. Format tanggal: `'YYYY-MM-DD'`."
+      - level: 3
+        kind: skeleton
+        body: "Lengkapi bagian yang kosong:"
+        insertSql: |
+          SELECT *
+          FROM laporan_kejadian
+          WHERE lokasi = '____'
+            AND tanggal = '____';
+      - level: 4
+        kind: solution
+        body: |
+          - `SELECT *` -> ambil semua kolom.
+          - `FROM laporan_kejadian` -> dari sheet laporan.
+          - `WHERE lokasi = ...` -> hanya baris di galeri.
+          - `AND tanggal = ...` -> dan hanya pada hari kejadian. Kedua syarat harus benar.
+        insertSql: |
+          SELECT *
+          FROM laporan_kejadian
+          WHERE lokasi = 'Galeri Sekar Arum'
+            AND tanggal = '2026-06-13';
+    onComplete: "CCTV mati pukul 21.00-21.40, dan saksi melihat seseorang keluar lewat pintu samping. Gilang membuka buku tamu digital."
+    suggestNote: { title: "Laporan pencurian galeri", tags: [laporan] }
+
+  - id: pintu-samping
+    title: "Pintu samping"
+    story: { file: story/langkah-2.md }
+    objective: >
+      Siapa saja yang KELUAR lewat pintu 'samping' antara pukul 21:00 dan 21:40
+      pada 13 Juni 2026? Tampilkan nama, nik, dan jam_keluar.
+    concepts: [where, between]
+    relatedTables: [buku_tamu]
+    validator:
+      type: keyColumn
+      column: nik
+      compare: set
+      solution: |
+        SELECT nama, nik, jam_keluar
+        FROM buku_tamu
+        WHERE tanggal = '2026-06-13'
+          AND pintu = 'samping'
+          AND jam_keluar BETWEEN '21:00' AND '21:40';
+    feedback:
+      rowCount: relative
+      mistakes:
+        - sql: "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40'"
+          message: "Ada catatan dari hari lain yang ikut terbawa. Saring juga tanggalnya."
+        - sql: "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND jam_keluar BETWEEN '21:00' AND '21:40'"
+          message: "Saksi melihat pelaku keluar lewat pintu samping, bukan pintu depan."
+    hints:
+      - level: 1
+        kind: direction
+        body: "Tiga fakta dari laporan: hari kejadian, pintu yang dipakai, dan 40 menit saat CCTV mati."
+      - level: 2
+        kind: tables
+        body: "Sheet `buku_tamu`: kolom `tanggal`, `pintu`, dan `jam_keluar` (format `'HH:MM'`)."
+      - level: 3
+        kind: skeleton
+        body: "Lengkapi:"
+        insertSql: |
+          SELECT nama, nik, jam_keluar
+          FROM buku_tamu
+          WHERE tanggal = '____'
+            AND pintu = '____'
+            AND jam_keluar BETWEEN '____' AND '____';
+      - level: 4
+        kind: solution
+        body: |
+          - Tiga syarat digabung dengan `AND`.
+          - `BETWEEN '21:00' AND '21:40'` mencakup kedua batas.
+          - Teks jam berformat `'HH:MM'` bisa dibandingkan langsung.
+        insertSql: |
+          SELECT nama, nik, jam_keluar
+          FROM buku_tamu
+          WHERE tanggal = '2026-06-13'
+            AND pintu = 'samping'
+            AND jam_keluar BETWEEN '21:00' AND '21:40';
+    onComplete: "Empat orang. Dua di antaranya bernama hampir sama. Ingat: nama bisa mirip, tapi NIK selalu unik."
+    suggestNote: { title: "Keluar lewat pintu samping 21:00-21:40", tags: [bukti] }
+
+  - id: terakhir-keluar
+    title: "Yang terakhir keluar"
+    story: { file: story/langkah-3.md }
+    objective: >
+      Dari orang-orang tadi, tampilkan 3 orang yang PALING AKHIR keluar,
+      diurutkan dari yang paling akhir. Kolom: nama, nik, jam_keluar.
+    concepts: [order-by, limit]
+    relatedTables: [buku_tamu]
+    validator:
+      type: resultEquals
+      solution: |
+        SELECT nama, nik, jam_keluar
+        FROM buku_tamu
+        WHERE tanggal = '2026-06-13'
+          AND pintu = 'samping'
+          AND jam_keluar BETWEEN '21:00' AND '21:40'
+        ORDER BY jam_keluar DESC
+        LIMIT 3;
+      options: { rowOrder: exact, columnOrder: any, columnNames: ignore }
+    feedback:
+      rowCount: exact
+      columnCount: true
+      mistakes:
+        - sql: "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40' ORDER BY jam_keluar ASC LIMIT 3"
+          message: "Itu tiga orang yang paling AWAL keluar. Balik urutannya dengan DESC."
+        - sql: "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' ORDER BY jam_keluar DESC LIMIT 3"
+          message: "Maria keluar pukul 21:45, setelah CCTV menyala lagi. Pertahankan batas jam 21:00-21:40."
+    hints:
+      - level: 1
+        kind: direction
+        body: "Pakai query langkah sebelumnya, lalu urutkan dan ambil beberapa baris teratas."
+      - level: 2
+        kind: tables
+        body: "Tetap di `buku_tamu`. Urutkan berdasarkan `jam_keluar`, dari besar ke kecil."
+      - level: 3
+        kind: skeleton
+        body: "Tambahkan dua baris ini di akhir query langkah 2:"
+        insertSql: |
+          ORDER BY ____ ____
+          LIMIT ____;
+      - level: 4
+        kind: solution
+        body: |
+          - `ORDER BY jam_keluar DESC` -> yang paling akhir keluar ada di atas.
+          - `LIMIT 3` -> ambil tiga baris pertama saja.
+        insertSql: |
+          SELECT nama, nik, jam_keluar
+          FROM buku_tamu
+          WHERE tanggal = '2026-06-13'
+            AND pintu = 'samping'
+            AND jam_keluar BETWEEN '21:00' AND '21:40'
+          ORDER BY jam_keluar DESC
+          LIMIT 3;
+    onComplete: "Budi Santosa keluar paling akhir, dua menit sebelum CCTV menyala. Budi Santoso ada di urutan ketiga. Dua Budi, dua NIK."
+    suggestNote: { title: "Tiga orang terakhir keluar", tags: [tersangka] }
+
+  - id: dua-budi
+    title: "Dua Budi"
+    story: { file: story/langkah-4.md }
+    objective: >
+      Periksa kedua Budi di sheet pegawai_galeri memakai NIK dari langkah sebelumnya.
+      Tampilkan nama, jabatan, dan hari_libur.
+    concepts: [where, in]
+    relatedTables: [pegawai_galeri, buku_tamu]
+    validator:
+      type: keyColumn
+      column: nama
+      compare: set
+      solution: |
+        SELECT nama, jabatan, hari_libur
+        FROM pegawai_galeri
+        WHERE nik IN ('9971020301880001', '9971020502900002');
+    feedback:
+      rowCount: relative
+      mistakes:
+        - sql: "SELECT nama, jabatan, hari_libur FROM pegawai_galeri WHERE hari_libur = 'Sabtu'"
+          message: "Ada dua pegawai yang libur hari Sabtu. Fokus pada dua Budi dari buku tamu, pakai NIK mereka."
+    hints:
+      - level: 1
+        kind: direction
+        body: "Nama bisa menipu. Cari kedua orang itu memakai identitas yang pasti unik."
+      - level: 2
+        kind: tables
+        body: "Salin kedua `nik` dari hasil langkah 3, lalu cari di sheet `pegawai_galeri`."
+      - level: 3
+        kind: skeleton
+        body: "Lengkapi dengan dua NIK:"
+        insertSql: |
+          SELECT nama, jabatan, hari_libur
+          FROM pegawai_galeri
+          WHERE nik IN ('____', '____');
+      - level: 4
+        kind: solution
+        body: |
+          - `WHERE nik IN (...)` -> cocokkan beberapa nilai sekaligus.
+          - Sama dengan `nik = '...' OR nik = '...'`.
+          - Hanya satu Budi yang muncul di sheet pegawai.
+        insertSql: |
+          SELECT nama, jabatan, hari_libur
+          FROM pegawai_galeri
+          WHERE nik IN ('9971020301880001', '9971020502900002');
+    onComplete: "Hanya satu Budi yang bekerja di galeri, dan jadwalnya mengatakan ia libur setiap Sabtu. Malam itu hari Sabtu."
+    suggestNote: { title: "Pegawai yang seharusnya libur", tags: [tersangka, bukti] }
+
+report:
+  suspects:
+    - id: tersangka
+      label: "Nama Tersangka"
+      answers: ["Budi Santosa"]
+  identity:
+    - { table: penduduk, key: nik, name: nama }
+    - { table: buku_tamu, key: nik, name: nama }
+    - { table: pegawai_galeri, key: nik, name: nama }
+  lookup: { table: penduduk, column: nama }
+  wrongSuspectNotes:
+    - { name: "Budi Santoso", note: "Budi Santoso bukan pegawai galeri. Ia kurir yang hanya lima menit di dalam untuk mengantar paket." }
+    - { name: "Rahmat Hidayat", note: "Rahmat satpam yang memang bertugas malam itu. Keluar lewat pintu samping adalah bagian dari patrolinya." }
+    - { name: "Siti Marlina", note: "Siti bertugas sesuai jadwal; hari liburnya Minggu. Kehadirannya malam itu wajar." }
+    - { name: "Maria Fransiska Lamanepa", note: "Maria keluar pukul 21:45, setelah CCTV kembali menyala. Rekamannya bersih." }
+    - { name: "Dimas Aditya", note: "Dimas keluar lewat pintu depan, bukan pintu samping yang dilihat saksi." }
+    - { name: "Joko Priyanto", note: "Joko tidak ada di galeri pada 13 Juni. Catatan pintu sampingnya dari hari sebelumnya." }
+  defaultWrongNote: "Orang ini tidak cocok dengan fakta kunci: pintu samping, pukul 21:00-21:40, dan akses ke ruang koleksi."
+  arrest:
+    scene: penangkapan-galeri-malam
+    suspectPortrait: assets/tersangka.webp
+    epilogue: { file: story/epilog.md }

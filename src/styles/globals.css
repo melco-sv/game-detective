@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/* ────────────────────────────────────────────────────────────────────────
+ * Token desain "Berkas Malam" (docs/03-design.md §2.1, §2.9).
+ * Mode gelap adalah mode UTAMA, jadi token gelap dipasang di :root dan
+ * diulang secara eksplisit di [data-theme="dark"]. [data-theme="light"]
+ * ("Kertas Siang") menimpa sebagian token untuk mode terang.
+ * ──────────────────────────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg-base: #0d1220;
+  --bg-editor: #0a0f1b;
+  --surface-1: #141a2a;
+  --surface-2: #1b2336;
+  --surface-3: #232d45;
+  --border-subtle: #2e3a56;
+  --border-strong: #5a6890;
+  --text-primary: #e9edf5;
+  --text-secondary: #a9b2c6;
+  --text-muted: #909bb2;
+
+  --primary: #f2b84b;
+  --primary-hover: #f7c96e;
+  --primary-pressed: #d9a13a;
+  --on-primary: #1a1407;
+  --primary-tint: #2f2d2e;
+
+  --danger: #ff5a5f;
+  --danger-container: #c8323a;
+  --on-danger-container: #ffffff;
+  --success: #34d39e;
+  --on-success: #06251a;
+  --info: #6aa5ff;
+  --hint: #b99aff;
+  --on-hint: #1b1030;
+  --focus: #f2b84b;
+
+  --paper: #ebddbf;
+  --paper-tab: #e0cfa8;
+  --paper-line: #cdb98f;
+  --on-paper: #2a2112;
+  --paper-muted: #6b5a3a;
+  --stamp-red: #b3261e;
+  --stamp-green: #1e6b4f;
+
+  --sql-keyword: #f2b84b;
+  --sql-function: #6aa5ff;
+  --sql-string: #34d39e;
+  --sql-number: #ff9a76;
+  --sql-column: #8fd3f5;
+  --sql-operator: #b99aff;
+  --sql-comment: #7d88a1;
+
+  --r-paper: 2px;
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --app-min-width: 1024px;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg-base: #f5f0e6;
+  --bg-editor: #fffdf8;
+  --surface-1: #fffdf8;
+  --surface-2: #ede5d3;
+  --surface-3: #e4d9c2;
+  --border-subtle: #d8ccb2;
+  --border-strong: #8c7d60;
+  --text-primary: #1a2030;
+  --text-secondary: #465066;
+  --text-muted: #586175;
+
+  --primary: #e8a838;
+  --primary-hover: #f0bb5e;
+  --primary-pressed: #c68f28;
+  --on-primary: #1a1407;
+  --primary-tint: #faecd2;
+
+  --danger: #b42330;
+  --danger-container: #b42330;
+  --success: #08704f;
+  --info: #2459c9;
+  --hint: #6b45c9;
+  --focus: #9a5b00;
+
+  --sql-keyword: #9a5b00;
+  --sql-function: #2459c9;
+  --sql-string: #0b7a57;
+  --sql-number: #b4461f;
+  --sql-column: #0f6e8c;
+  --sql-operator: #6b45c9;
+  --sql-comment: #666e7e;
+
+  color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+ * Jembatan token → utilitas Tailwind v4. `--font-*` diisi oleh next/font
+ * lewat variabel CSS yang dipasang di <html> (src/app/layout.tsx).
+ * ──────────────────────────────────────────────────────────────────────── */
+@theme inline {
+  --color-bg-base: var(--bg-base);
+  --color-bg-editor: var(--bg-editor);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-pressed: var(--primary-pressed);
+  --color-on-primary: var(--on-primary);
+  --color-primary-tint: var(--primary-tint);
+
+  --color-danger: var(--danger);
+  --color-danger-container: var(--danger-container);
+  --color-on-danger-container: var(--on-danger-container);
+  --color-success: var(--success);
+  --color-on-success: var(--on-success);
+  --color-info: var(--info);
+  --color-hint: var(--hint);
+  --color-on-hint: var(--on-hint);
+  --color-focus: var(--focus);
+
+  --color-paper: var(--paper);
+  --color-paper-tab: var(--paper-tab);
+  --color-paper-line: var(--paper-line);
+  --color-on-paper: var(--on-paper);
+  --color-paper-muted: var(--paper-muted);
+  --color-stamp-red: var(--stamp-red);
+  --color-stamp-green: var(--stamp-green);
+
+  --color-sql-keyword: var(--sql-keyword);
+  --color-sql-function: var(--sql-function);
+  --color-sql-string: var(--sql-string);
+  --color-sql-number: var(--sql-number);
+  --color-sql-column: var(--sql-column);
+  --color-sql-operator: var(--sql-operator);
+  --color-sql-comment: var(--sql-comment);
+
+  --font-sans: var(--font-ui), system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+  --font-display: var(--font-display-face), "Barlow Condensed", sans-serif;
+
+  --radius-paper: var(--r-paper);
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border-subtle);
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+  /* Angka selalu tabular (03-design §2.2): tabel hasil, skor, waktu. */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}

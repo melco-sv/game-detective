@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# konten hasil build (dibangun ulang dari content/, lihat scripts/build-content.ts)
+public/generated/
+
+# worker SQL hasil bundel esbuild (dibangun ulang dari src/infra/sql/, lihat scripts/build-worker.ts)
+public/workers/
+
+# rahasia server (v1) — jangan pernah commit
+.secrets/
+
+# testing
+/coverage
+/playwright-report
+/test-results
+
+# env
+.env*.local
+.env.local
+
+# editor / OS
+.DS_Store
+*.pem
+Thumbs.db
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

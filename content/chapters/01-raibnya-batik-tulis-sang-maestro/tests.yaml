@@ -1,0 +1,46 @@
+steps:
+  laporan-galeri:
+    pass:
+      - "SELECT * FROM laporan_kejadian WHERE tanggal = '2026-06-13' AND lokasi = 'Galeri Sekar Arum'"
+      - "select keterangan, jenis, lokasi, distrik, tanggal, id from laporan_kejadian where lokasi = 'Galeri Sekar Arum' and tanggal = '2026-06-13'"
+    fail:
+      - "SELECT * FROM laporan_kejadian WHERE lokasi = 'Galeri Sekar Arum'"
+      - "SELECT * FROM laporan_kejadian WHERE tanggal = '2026-06-13'"
+      - "SELECT keterangan FROM laporan_kejadian WHERE lokasi = 'Galeri Sekar Arum' AND tanggal = '2026-06-13'"
+    expectMistake:
+      - { sql: "SELECT * FROM laporan_kejadian WHERE tanggal = '2026-06-13'", mistake: 0 }
+
+  pintu-samping:
+    pass:
+      - "SELECT * FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar >= '21:00' AND jam_keluar <= '21:40'"
+      - "SELECT nik FROM buku_tamu WHERE pintu = 'samping' AND tanggal = '2026-06-13' AND jam_keluar > '21:00' AND jam_keluar < '21:40' ORDER BY jam_keluar"
+    fail:
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40'"
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND jam_keluar BETWEEN '21:00' AND '21:40'"
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping'"
+      - "SELECT nama, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40'"
+
+  terakhir-keluar:
+    pass:
+      - "SELECT jam_keluar, nama, nik FROM buku_tamu WHERE pintu = 'samping' AND tanggal = '2026-06-13' AND jam_keluar >= '21:00' AND jam_keluar <= '21:40' ORDER BY jam_keluar DESC LIMIT 3"
+      - "SELECT nama AS tersangka, nik, jam_keluar AS keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40' ORDER BY 3 DESC LIMIT 3"
+    fail:
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40' ORDER BY jam_keluar ASC LIMIT 3"
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' ORDER BY jam_keluar DESC LIMIT 3"
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND jam_keluar BETWEEN '21:00' AND '21:40' ORDER BY jam_keluar DESC LIMIT 3"
+      - "SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40'"
+    expectOrderOnly:
+      - "SELECT * FROM (SELECT nama, nik, jam_keluar FROM buku_tamu WHERE tanggal = '2026-06-13' AND pintu = 'samping' AND jam_keluar BETWEEN '21:00' AND '21:40' ORDER BY jam_keluar DESC LIMIT 3) ORDER BY jam_keluar ASC"
+
+  dua-budi:
+    pass:
+      - "SELECT * FROM pegawai_galeri WHERE nik = '9971020502900002'"
+      - "SELECT nama, jabatan, hari_libur FROM pegawai_galeri WHERE nik = '9971020301880001' OR nik = '9971020502900002'"
+    fail:
+      - "SELECT nama, jabatan, hari_libur FROM pegawai_galeri"
+      - "SELECT nama, jabatan, hari_libur FROM pegawai_galeri WHERE hari_libur = 'Sabtu'"
+      - "SELECT nama, jabatan, hari_libur FROM pegawai_galeri WHERE nama = 'Budi Santoso'"
+
+report:
+  pass: ["Budi Santosa", "  budi   SANTOSA ", "Pak Budi Santosa", "Budi Santosa."]
+  fail: ["Budi Santoso", "Budi", "Rahmat Hidayat", "Budi Hartanto", "Santosa"]

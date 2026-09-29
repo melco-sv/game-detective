@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Detektif SQL - Kota Wiralaga</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#ffd4d2","on-error":"#690005","secondary-container":"#bb881c","error":"#ffb4ab","on-amber":"#1A1407","on-paper":"#2A2112","danger":"#FF5A5F","bg-editor":"#0A0F1B","tertiary-fixed-dim":"#ffb3b0","on-tertiary-fixed":"#410007","inverse-surface":"#dee2f6","accent-amber":"#F2B84B","surface-dim":"#0e1321","stamp-red":"#B3261E","primary-container":"#ebddbf","error-container":"#93000a","paper-tab":"#E0CFA8","on-tertiary":"#680010","primary-fixed-dim":"#d3c5a8","tertiary-fixed":"#ffdad8","outline":"#969085","background":"#0e1321","text-primary":"#E9EDF5","paper-muted":"#6B5A3A","on-primary":"#37301b","outline-variant":"#4b463d","surface-container-lowest":"#090e1c","on-surface-variant":"#cdc6b9","surface-container-low":"#161b2a","surface":"#0e1321","on-error-container":"#ffdad6","success":"#34D39E","on-secondary-fixed":"#271900","surface-container":"#1a1f2e","surface-3":"#232D45","text-secondary":"#A9B2C6","on-secondary":"#422c00","on-tertiary-fixed-variant":"#92001b","tertiary":"#fff9f8","primary-fixed":"#efe1c3","surface-container-high":"#252a39","border-subtle":"#2E3A56","paper":"#EBDDBF","info":"#6AA5FF","on-primary-fixed-variant":"#4f4630","surface-2":"#1B2336","paper-line":"#CDB98F","surface-tint":"#d3c5a8","stamp-green":"#1E6B4F","border-strong":"#5A6890","surface-bright":"#343948","on-background":"#dee2f6","inverse-primary":"#675d46","secondary-fixed-dim":"#f7bd4f","surface-container-highest":"#303444","bg-base":"#0D1220","text-muted":"#909BB2","primary":"#fffaf7","on-primary-container":"#6b6149","secondary-fixed":"#ffdeaa","on-tertiary-container":"#ba2733","secondary":"#f7bd4f","surface-1":"#141A2A","on-primary-fixed":"#211b08","hint":"#B99AFF","on-secondary-fixed-variant":"#5f4100","inverse-on-surface":"#2b303f","danger-container":"#C8323A","surface-variant":"#303444","on-secondary-container":"#392600","on-surface":"#dee2f6"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"2rem","space-md":"1rem","margin":"2rem","gutter-dense":"0.75rem","gutter":"1.5rem","space-lg":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","margin-mobile":"1rem"},"fontFamily":{"code-md":["JetBrains Mono"],"body-lg":["Manrope"],"label-sm":["Manrope"],"display-lg-mobile":["Domine"],"display-xl-mobile":["Domine"],"body-md":["Manrope"],"body-sm":["Manrope"],"label-md":["Manrope"],"code-sm":["JetBrains Mono"],"headline-lg":["Domine"],"display-md":["Domine"],"display-xl":["Domine"],"headline-sm":["Manrope"],"display-lg":["Domine"]},"fontSize":{"code-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"display-lg-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"18px","fontWeight":"500"}],"headline-lg":["22px",{"lineHeight":"30px","fontWeight":"600"}],"display-md":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"700"}],"display-lg":["40px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"700"}]}}}}</script></head><body class="bg-bg-base font-body-md text-text-primary antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 z-50 h-14 bg-bg-base border-b border-border-subtle"><div class="h-14 w-full px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Emblem DID Wiralaga" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WI9Hvn5PgFX9NxgHJsuJVYxNtsZrZrk8JdgK7irfSUXOMuvIYXn0LtzYtvmTuRmTps-DB9AK1mYzBVkTDGSqe1wsF3CgrCHwqNI4T8UDr156HMizPPrvRBm9XgxbypQeNxGbzV3orhgrFugElMYVvaaUD7B4Ql52xZK5drVNhJD_UVWuSlUe8muNwky6jVEka-rua9-HqjIlQmePd4cbkPavGmd5VFi29sOZvAANhoSVrWpo4fKK8BRNCQ"/><div class="flex flex-col justify-center"><span class="font-label-sm text-label-sm uppercase tracking-wider text-accent-amber leading-none">KOTA WIRALAGA</span><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-text-primary leading-tight">Detektif SQL</span></div></div><nav class="hidden md:flex items-center gap-space-xs h-full" data-active-classes="bg-surface-2 text-accent-amber border-b-2 border-accent-amber font-semibold"><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="papan-kasus" href="#">Papan Kasus</a><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="ruang-investigasi" href="#">Ruang Investigasi</a><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="buku-catatan" href="#">Buku Catatan</a><a class="px-space-md h-full flex items-center text-on-surface-variant hover:text-on-surface hover:bg-surface-1 transition-colors font-label-md text-label-md" data-path="pengaturan" href="#">Pengaturan</a></nav><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-1 border border-border-subtle"><span class="w-2 h-2 rounded-full bg-success animate-pulse"></span><span class="font-code-sm text-code-sm text-text-muted">Lokal / Aman</span></div><div class="flex items-center gap-space-sm px-space-sm py-space-xs rounded bg-surface-2 border border-border-subtle"><span class="material-symbols-outlined text-accent-amber text-[18px]">verified</span><div class="hidden sm:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary leading-tight">Raka Pratama</span><span class="font-body-sm text-body-sm text-text-muted leading-tight">Detektif Muda</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-14 bg-bg-base min-h-[calc(100vh-56px)] flex flex-col"><div class="flex flex-col w-full relative min-h-full">
+<!-- IDE Investigation Room (Background Layer - Dimmed & Blurred) -->
+<div aria-hidden="true" class="absolute inset-0 select-none pointer-events-none filter blur-[5px] opacity-40 overflow-hidden flex flex-col">
+<!-- Sub-header bar inside IDE workspace -->
+<div class="h-10 bg-surface-1 flex items-center justify-between px-space-md shadow-sm">
+<div class="flex items-center gap-space-sm text-text-muted">
+<span class="font-code-sm text-code-sm text-accent-amber">wiralaga_db.sqlite</span>
+<span class="text-text-muted">/</span>
+<span class="font-code-sm text-code-sm">kasus_03_sambal_curian.sql</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-surface-3"></span>
+<span class="w-3 h-3 rounded-full bg-surface-3"></span>
+<span class="w-3 h-3 rounded-full bg-accent-amber opacity-60"></span>
+</div>
+</div>
+<!-- Mocked 3-Column Workbench Interface -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Column: Investigation Tree (300px) -->
+<div class="w-[300px] bg-surface-1 p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted">Pohon Bukti #03</span>
+<span class="material-symbols-outlined text-text-muted text-[16px]">account_tree</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="bg-surface-2 p-space-sm rounded-DEFAULT flex items-center gap-space-xs text-text-primary">
+<span class="material-symbols-outlined text-accent-amber text-[16px]">folder_open</span>
+<span class="font-body-sm text-body-sm font-semibold truncate">Warung Bu Tedjo</span>
+</div>
+<div class="pl-space-md flex flex-col gap-space-xs text-text-muted font-body-sm text-body-sm">
+<div class="flex items-center gap-space-xs py-space-xs">
+<span class="material-symbols-outlined text-[14px] text-success">check_circle</span>
+<span class="truncate">01. Log Akses Dapur</span>
+</div>
+<div class="flex items-center gap-space-xs py-space-xs">
+<span class="material-symbols-outlined text-[14px] text-success">check_circle</span>
+<span class="truncate">02. Rekaman CCTV Parkir</span>
+</div>
+<div class="flex items-center gap-space-xs py-space-xs bg-surface-3 rounded-DEFAULT text-accent-amber">
+<span class="material-symbols-outlined text-[14px]">radio_button_checked</span>
+<span class="truncate">03. Resep Rahasia Hilang</span>
+</div>
+</div>
+<div class="bg-surface-1 p-space-sm rounded-DEFAULT flex items-center gap-space-xs text-text-muted mt-space-sm">
+<span class="material-symbols-outlined text-[16px]">dns</span>
+<span class="font-body-sm text-body-sm truncate">Tabel: penduduk</span>
+</div>
+<div class="bg-surface-1 p-space-sm rounded-DEFAULT flex items-center gap-space-xs text-text-muted">
+<span class="material-symbols-outlined text-[16px]">dns</span>
+<span class="font-body-sm text-body-sm truncate">Tabel: transaksi_toko</span>
+</div>
+</div>
+</div>
+<!-- Center Column: SQL Editor & Result Grid -->
+<div class="flex-1 bg-bg-editor p-space-md flex flex-col gap-space-md">
+<!-- Editor Inset -->
+<div class="h-64 bg-surface-container-lowest p-space-md rounded-DEFAULT font-code-md text-code-md text-text-primary">
+<div class="text-text-muted flex gap-space-sm mb-space-xs">
+<span class="text-text-muted select-none">1</span>
+<span><span class="text-accent-amber font-semibold">SELECT</span> p.nik, p.nama, p.pekerjaan, t.waktu_kunjungan</span>
+</div>
+<div class="text-text-muted flex gap-space-sm mb-space-xs">
+<span class="text-text-muted select-none">2</span>
+<span><span class="text-accent-amber font-semibold">FROM</span> penduduk p</span>
+</div>
+<div class="text-text-muted flex gap-space-sm mb-space-xs">
+<span class="text-text-muted select-none">3</span>
+<span><span class="text-accent-amber font-semibold">JOIN</span> log_kehadiran t <span class="text-accent-amber font-semibold">ON</span> p.nik = t.nik</span>
+</div>
+<div class="text-text-muted flex gap-space-sm mb-space-xs">
+<span class="text-text-muted select-none">4</span>
+<span><span class="text-accent-amber font-semibold">WHERE</span> t.lokasi = <span class="text-success">'Dapur Belakang'</span></span>
+</div>
+<div class="text-text-muted flex gap-space-sm">
+<span class="text-text-muted select-none">5</span>
+<span>  <span class="text-accent-amber font-semibold">AND</span> t.waktu_kunjungan <span class="text-accent-amber font-semibold">BETWEEN</span> <span class="text-success">'23:00'</span> <span class="text-accent-amber font-semibold">AND</span> <span class="text-success">'01:30'</span>;</span>
+</div>
+</div>
+<!-- Result Table Inset -->
+<div class="flex-1 bg-surface-1 rounded-DEFAULT overflow-hidden p-space-sm">
+<div class="grid grid-cols-4 bg-surface-2 p-space-xs font-code-sm text-code-sm text-text-secondary uppercase">
+<div>nik</div>
+<div>nama</div>
+<div>pekerjaan</div>
+<div>waktu</div>
+</div>
+<div class="grid grid-cols-4 p-space-xs font-code-sm text-code-sm text-text-primary bg-surface-1">
+<div>3271019803...</div>
+<div>Bambang S.</div>
+<div>Kurir Bumbu</div>
+<div>23:42:10</div>
+</div>
+<div class="grid grid-cols-4 p-space-xs font-code-sm text-code-sm text-text-primary bg-surface-container-low">
+<div>3271028711...</div>
+<div>Siti Aminah</div>
+<div>Asisten Koki</div>
+<div>00:15:22</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Schema & Notebook (320px) -->
+<div class="w-[320px] bg-surface-1 p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted">Buku Catatan Bukti</span>
+<span class="material-symbols-outlined text-accent-amber text-[18px]">menu_book</span>
+</div>
+<div class="p-space-sm bg-surface-2 rounded-DEFAULT text-text-secondary font-body-sm text-body-sm leading-relaxed">
+          Petunjuk: Saksi mata melihat seseorang membawa toples cabai kaca besar sekitar pukul tengah malam menggunakan celemek abu-abu.
+        </div>
+<div class="p-space-sm bg-surface-container-lowest rounded-DEFAULT text-text-muted font-code-sm text-code-sm flex flex-col gap-space-xs">
+<span class="text-accent-amber uppercase font-bold text-[10px]">SKEMA: log_kehadiran</span>
+<div>id: INTEGER PRIMARY KEY</div>
+<div>nik: VARCHAR(16)</div>
+<div>lokasi: TEXT</div>
+<div>waktu_kunjungan: DATETIME</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Heavy Noir Modal Overlay -->
+<div class="relative z-10 w-full min-h-[calc(100vh-56px)] bg-[#0D1220]/[0.85] backdrop-blur-[4px] flex flex-col items-center justify-center px-space-md py-space-xl">
+<!-- Outer Interactive Flow Container -->
+<div class="w-full max-w-[640px] flex flex-col items-center">
+<!-- Physical Manila Police Dossier Paper (Rotated -1 deg, Deep Shadow) -->
+<div class="relative w-full bg-paper text-on-paper rounded-DEFAULT shadow-[0_22px_45px_-10px_rgba(0,0,0,0.85),0_0_0_1px_#CDB98F] transform -rotate-1 transition-transform duration-300 hover:rotate-0 p-space-xl sm:p-10 select-text overflow-hidden">
+<!-- Physical Paper Texture / Noise Overlay (Faint parchment grain) -->
+<div class="absolute inset-0 pointer-events-none opacity-35 bg-[radial-gradient(#CDB98F_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<!-- Realistic Vintage Metallic Paperclip (Top Right) -->
+<div aria-hidden="true" class="absolute -top-3 right-12 w-6 h-16 pointer-events-none z-20 flex flex-col items-center">
+<div class="w-5 h-14 rounded-full border-[3px] border-[#8D96A8] bg-transparent shadow-[2px_3px_6px_rgba(0,0,0,0.4)]"></div>
+<div class="w-3 h-10 -mt-12 rounded-full border-[2.5px] border-[#5E687A] bg-transparent opacity-90"></div>
+</div>
+<!-- Top Red Physical Archive Stamp ("RAHASIA") -->
+<div class="absolute top-6 right-20 pointer-events-none select-none z-10 transform rotate-[8deg] opacity-85">
+<div class="border-[3px] border-stamp-red px-space-sm py-[2px] rounded-DEFAULT">
+<div class="border border-stamp-red px-space-xs py-[1px]">
+<span class="font-code-sm text-code-sm font-bold tracking-widest text-stamp-red uppercase">RAHASIA / A-1</span>
+</div>
+</div>
+</div>
+<!-- Document Header / Kop Dokumen Resmi -->
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="flex items-start gap-space-md">
+<!-- Official Seal Image -->
+<div class="w-16 h-16 shrink-0 rounded-full bg-paper-tab flex items-center justify-center p-1 shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+<img alt="Emblem Divisi Investigasi Data Wiralaga" class="w-full h-full object-contain filter contrast-125 brightness-95" src="https://lh3.googleusercontent.com/aida/AEtjO1UUJlbh_cjzmmqy6BzdY1uBuFH6gUTfL8ZJGaIRZL9R9nZDW2zETjU6A2Nftq653YfmGS0yOS4HAkzouPxbTa0nKcW1rp6mOHjjrFCQSIOxr1MaNKYrdOHqoZwRjhOBvoWFjRehpIrm7c9wWPUntzUy5CCru3B1kUx1fgApGqLSjAiTUQ70EO0PBSu_yQz-l2wgT7nbM4UzeVdXkaMsc8xwvkUt67hMB3bD9qkXtCF3r-4koA0WILvFeqk"/>
+</div>
+<!-- Department Metadata -->
+<div class="flex-1 flex flex-col justify-center">
+<span class="font-headline-sm text-[15px] font-extrabold tracking-wider uppercase text-on-paper leading-tight">
+                DIVISI INVESTIGASI DATA
+              </span>
+<span class="font-label-sm text-[10.5px] tracking-tight uppercase text-paper-muted font-bold leading-normal mt-[2px]">
+                KOTA WIRALAGA • UNIT TINDAK PIDANA SIBER &amp; FORENSIK DATA
+              </span>
+<span class="font-body-sm text-[10px] text-paper-muted leading-tight">
+                Gedung Presisi Lantai IV, Jl. Bhayangkara Cyber No. 09, Wiralaga
+              </span>
+</div>
+</div>
+<!-- Document Classification Title -->
+<div class="mt-space-sm text-center flex flex-col items-center">
+<h1 class="font-display-lg text-[32px] sm:text-[38px] font-extrabold uppercase tracking-[0.18em] text-on-paper leading-none">
+              LAPORAN POLISI
+            </h1>
+<div class="mt-space-xs flex items-center gap-space-xs font-code-sm text-code-sm font-semibold text-paper-muted">
+<span>TANDA BUKTI LAPORAN:</span>
+<span class="font-bold text-on-paper bg-[#E0CFA8] px-space-xs py-[1px] rounded-DEFAULT">No. LP/03/DID/VIII/2026</span>
+</div>
+</div>
+<!-- Double Administrative Rule -->
+<div aria-hidden="true" class="w-full flex flex-col gap-[2px] my-space-xs">
+<div class="w-full h-[2px] bg-on-paper opacity-85"></div>
+<div class="w-full h-[0.75px] bg-on-paper opacity-50"></div>
+</div>
+</div>
+<!-- Form Fields Container -->
+<form class="relative z-10 flex flex-col gap-space-lg mt-space-sm" id="police-report-form" onsubmit="event.preventDefault(); handleSubmitReport();">
+<!-- FIELD 1: Nomor Kasus (Read-only, Auto-filled) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-code-sm text-[11px] font-bold tracking-widest text-paper-muted uppercase">
+              NOMOR KASUS • KLASIFIKASI PERKARA
+            </label>
+<div class="w-full pb-space-xs border-b-[1.5px] border-paper-line flex items-baseline justify-between">
+<span class="font-code-md text-code-md font-semibold text-on-paper tracking-tight">
+                03/DID/VIII/2026 • Bab 3 — Sambal Juara yang Dicuri
+              </span>
+<span class="material-symbols-outlined text-paper-muted text-[18px]" title="Field Terkunci">lock</span>
+</div>
+</div>
+<!-- FIELD 2: Nama Tersangka (Main Interactive Typewriter Field) -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-code-sm text-[12px] font-bold tracking-widest text-paper-muted uppercase flex items-center gap-space-xs" for="suspect-input">
+<span>NAMA TERSANGKA UTAMA</span>
+<span class="text-stamp-red font-bold text-base leading-none">*</span>
+</label>
+<span class="font-code-sm text-[10px] text-paper-muted uppercase tracking-wider">KOLOM IDENTIFIKASI</span>
+</div>
+<!-- Typewriter Underlined Input -->
+<div class="relative w-full">
+<input autocomplete="off" class="w-full bg-transparent border-0 border-b-2 border-on-paper rounded-none px-0 py-space-xs font-code-md text-[18px] sm:text-[20px] text-on-paper placeholder-paper-muted/65 focus:outline-none focus:border-stamp-red transition-colors duration-200 tracking-wide uppercase" id="suspect-input" name="nama_tersangka" placeholder="Tulis nama lengkap tersangka…" required="" spellcheck="false" type="text"/>
+<span class="material-symbols-outlined absolute right-0 bottom-space-xs text-on-paper/40 pointer-events-none text-[20px]">
+                edit_document
+              </span>
+</div>
+<!-- Field Instructions / Helper -->
+<p class="font-body-sm text-[11.5px] text-paper-muted font-medium leading-relaxed mt-space-xs">
+              Tulis sesuai kolom <code class="font-code-sm text-[11px] bg-paper-tab px-1 py-[1px] rounded text-on-paper font-semibold">nama</code> di tabel <code class="font-code-sm text-[11px] bg-paper-tab px-1 py-[1px] rounded text-on-paper font-semibold">penduduk</code>. (Pencocokan nama tidak peka huruf besar/kecil).
+            </p>
+</div>
+<!-- Official Advisory Notice Box -->
+<div class="bg-paper-tab/50 p-space-sm rounded-DEFAULT flex flex-col gap-[3px] text-[11px] font-body-sm leading-tight text-on-paper">
+<div class="flex items-center gap-space-xs text-stamp-red font-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>• Laporan yang salah mengurangi 100 poin.</span>
+</div>
+<div class="flex items-center gap-space-xs text-paper-muted font-medium pl-[18px]">
+<span>• Step yang belum selesai tidak memberi poin.</span>
+</div>
+</div>
+<!-- Decorative Pen Signature Section -->
+<div class="flex items-end justify-between pt-space-sm mt-space-xs border-t border-paper-line/70">
+<!-- Stamp cleared or badge mock -->
+<div class="flex flex-col items-start opacity-70">
+<span class="font-code-sm text-[9.5px] text-paper-muted tracking-wider uppercase">STAT: INVESTIGASI AKTIF</span>
+<span class="font-code-sm text-[9px] text-paper-muted">VERIFIKASI SISTEM TERPADU</span>
+</div>
+<!-- Right Official Signature Block -->
+<div class="flex flex-col items-center text-center min-w-[190px]">
+<span class="font-body-sm text-[11px] text-on-paper font-medium">
+                Wiralaga, 15 Agustus 2026
+              </span>
+<!-- Realistic Handwritten Ink Signature SVG -->
+<div aria-label="Tanda tangan Raka Pratama" class="w-36 h-12 my-1 flex items-center justify-center relative">
+<svg aria-hidden="true" class="w-full h-full text-on-paper fill-none stroke-current stroke-[2.2] stroke-linecap-round stroke-linejoin-round" viewbox="0 0 160 48">
+<path d="M12,36 C28,12 42,6 55,20 C68,34 76,40 92,18 C98,10 102,12 110,26 C118,40 134,30 148,15 M35,28 C50,26 85,24 125,22 M70,10 L74,38"></path>
+</svg>
+</div>
+<div class="w-full h-[1px] bg-on-paper/70"></div>
+<div class="mt-space-xs flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-paper leading-tight">
+                  Penyidik: Raka Pratama
+                </span>
+<span class="font-code-sm text-[10px] text-paper-muted font-semibold tracking-wider">
+                  NIP/ID: DID-2026-048
+                </span>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Action Buttons Outside Document (On Dark Noir Floor) -->
+<div class="w-full flex flex-col-reverse sm:flex-row items-center justify-between gap-space-md mt-space-lg px-space-xs">
+<!-- Secondary / Cancel Button -->
+<button class="w-full sm:w-auto px-space-md py-space-sm rounded-DEFAULT bg-surface-2 hover:bg-surface-3 text-text-primary hover:text-white font-label-md text-label-md transition-all duration-150 flex items-center justify-center gap-space-xs shadow-sm cursor-pointer" onclick="window.history.back()" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Kembali Menyelidiki</span>
+</button>
+<!-- Primary CTA: Ajukan Laporan (Amber Stamp / Gavel Action) -->
+<button class="w-full sm:w-auto px-space-lg py-space-sm rounded-DEFAULT bg-accent-amber hover:bg-secondary-fixed text-on-amber font-label-md text-label-md font-bold tracking-tight transition-all duration-150 transform active:scale-[0.98] flex items-center justify-center gap-space-sm shadow-[0_4px_14px_rgba(242,184,75,0.3)] cursor-pointer" onclick="document.getElementById('police-report-form').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span>Ajukan Laporan</span>
+</button>
+</div>
+<!-- Feedback / Result Prompt Toast Container (Interactive script target) -->
+<div class="mt-space-md hidden w-full p-space-md rounded-DEFAULT font-body-sm text-body-sm transition-all duration-200" id="submission-feedback"></div>
+</div>
+</div>
+</div>
+<!-- Form Submission Micro-Interaction -->
+<script>
+  function handleSubmitReport() {
+    const input = document.getElementById('suspect-input');
+    const feedback = document.getElementById('submission-feedback');
+    const val = (input ? input.value : '').trim();
+
+    if (!val) {
+      input.focus();
+      return;
+    }
+
+    feedback.classList.remove('hidden', 'bg-surface-2', 'bg-danger-container', 'text-text-primary', 'text-white');
+
+    // Simulate verification checking against crime database
+    if (val.toLowerCase() === 'bambang suryanto' || val.toLowerCase().includes('bambang')) {
+      feedback.className = 'mt-space-md w-full p-space-md rounded-DEFAULT bg-surface-2 text-success font-code-sm text-code-sm flex items-center gap-space-sm shadow-md';
+      feedback.innerHTML = '<span class="material-symbols-outlined text-success text-[20px]">check_circle</span> <div><strong>Laporan Diterima:</strong> Tersangka cocok dengan berkas rekaman saksi. Berkas Bab 3 dinyatakan <em>KASUS DITUTUP</em>.</div>';
+    } else {
+      feedback.className = 'mt-space-md w-full p-space-md rounded-DEFAULT bg-surface-2 text-danger font-code-sm text-code-sm flex items-center gap-space-sm shadow-md';
+      feedback.innerHTML = '<span class="material-symbols-outlined text-danger text-[20px]">error</span> <div><strong>Laporan Ditolak:</strong> Nama tersangka "' + val + '" tidak sesuai dengan alibi data digital. Pengurangan 100 poin dicatat.</div>';
+    }
+  }
+</script></main><footer class="w-full bg-surface-1 border-t border-border-subtle py-space-md"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-sm text-text-muted font-body-sm text-body-sm"><div><span>© 2024 Divisi Investigasi Data (DID) Kota Wiralaga. Berkas Kasus Rahasia.</span></div><div class="flex items-center gap-space-md font-code-sm text-code-sm"><span>TERMINAL SECURE V2.4</span><span class="text-border-strong">|</span><span>KLASIFIKASI: A-1</span></div></div></footer></body></html>
